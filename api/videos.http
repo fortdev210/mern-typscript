@@ -1,0 +1,18 @@
+@api = http://localhost:5000
+
+GET {{api}}/videos
+################################
+GET {{api}}/videos/1
+#################################
+POST {{api}}/videos
+Content-Type: application/json
+
+{
+    "url" :"https://www.youtube.com/watch?v=f687hBjwFcM",
+    "title": "React Hook Tutorial",
+    "description": "This shows the use of react hooks"
+}
+################################
+PUT {{api}}/videos/1
+################################
+DELETE {{api}}/videos/1
