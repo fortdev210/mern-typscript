@@ -2,7 +2,7 @@
 
 GET {{api}}/videos
 ################################
-GET {{api}}/videos/1
+GET {{api}}/videos/602b828927c44c20882
 #################################
 POST {{api}}/videos
 Content-Type: application/json
@@ -13,6 +13,13 @@ Content-Type: application/json
     "description": "This shows the use of react hooks"
 }
 ################################
-PUT {{api}}/videos/1
+PUT {{api}}/videos/602b8371f1e75b05c8159737
+Content-Type: application/json
+
+{
+    "url" :"https://www.youtube.com/watch?v=f687hBjwFcM",
+    "title": "React Main Hook Tutorial",
+    "description": "This shows the use of react hooks"
+}
 ################################
-DELETE {{api}}/videos/1
+DELETE {{api}}/videos/602b828927c44c20882aa4dc

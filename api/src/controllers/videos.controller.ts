@@ -2,12 +2,23 @@ import { RequestHandler } from 'express';
 import Video from './../models/Video'
 
 export const getVideos: RequestHandler = async (req, res) => {
-    const videos = await Video.find();
-    return res.json(videos);
+    try {
+        const videos = await Video.find();
+        return res.json(videos);
+    } catch (error) {
+        res.json(error);
+    }
 }
 
-export const getVideo : RequestHandler = (req, res) => {
-    res.json('Get one video')
+export const getVideo : RequestHandler = async (req, res) => {
+    try {
+        const videoFound = await Video.findById(req.params.id);
+        if (!videoFound) return res.status(204).json();
+        return res.json(videoFound);
+    } catch (error) {
+        return res.json(error);
+    }
+    
 }
 
 export const createVideo: RequestHandler = async (req, res) => {
@@ -20,11 +31,14 @@ export const createVideo: RequestHandler = async (req, res) => {
     res.json(savedVideo)
 }
 
-export const updateVideo: RequestHandler = (req, res) => {
-    res.json('updating a video')
+export const updateVideo: RequestHandler = async (req, res) => {
+    const videoUpdated = await Video.findByIdAndUpdate(req.params.id, req.body);
+    res.json(videoUpdated)
 }
 
-export const deleteVideo: RequestHandler = (req, res) => {
-    res.json('deleting a video')
+export const deleteVideo: RequestHandler = async (req, res) => {
+    const videoFound = await Video.findByIdAndDelete(req.params.id);
+    if (!videoFound) return res.status(204).json();
+    return res.json(videoFound);
 }
 
